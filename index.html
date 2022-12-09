@@ -1,0 +1,223 @@
+<!Doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="sidebar">
+      <nav id="navbar">
+        <header>MUMPS Documentation</header>
+          <ul>
+            <li>
+              <a href="#Introduction" class="nav-link">Introduction</a>
+            </li>
+            <li>
+              <a href="#Open_Mumps_Interpreter" class=nav-link>Open Mumps Interpreter</a>
+            </li>
+            <li>
+              <a href="#Syntax_Warning" class="nav-link">Syntax Warning</a>
+            </li>
+            <li>
+              <a href="#Variables" class="nav-link">Variables</a>
+            </li>
+            <li>
+              <a href="#String_Constants" class="nav-link">String Constants</a>
+            </li>
+            <li>
+              <a href="#Mumps_Commands" class="nav-link">Mumps Commands</a>
+            </li>
+            <li>
+              <a href="#Built_In_Functions_&_Variables" class="nav-link">Built In Functions & Variables</a>
+            </li>
+            <li>
+              <a href="#Reference" class="nav-link">Reference</a>
+            </li>
+          </ul>
+        </nav>
+    </div>
+    <div class="main-body">
+      <main id="main-doc">
+      <!--Will contain the page's main content -->
+        <section class="main-section" id="Introduction">
+         <header>Introduction</header>
+          <p>
+            Mumps (Massachusetts General Hospital Utility Multi-programming System) is a 
+general purpose programming language environment that provides ACID (Atomic, Consistent, Isolated, and Durable) database access by means of program level subscripted arrays and variables. The Mumps database allows schema-less, key-value access to disk resident data organized as trees that may also be viewed as sparse multi-dimensional arrays.
+          </p>
+          <p>
+            Beginning in 1966, Mumps (also referred to as M), was developed by Neil Pappalardo and others in Octo Barnett's lab at the Massachusetts General Hospital (MGH) on a 
+PDP-7, the same architecture on which Unix was being implemented at approximately the same time.        
+          </p>
+          <p>
+            Today, Mumps programs are employed extensively in financial and clinical applications. If you've been to a doctor, been seen at a hospital, or used an ATM machine, your data has probably been processed by a Mumps program.
+          </p>
+          <p>
+            Mumps programs are the basis of the U.S. Veterans Administration's computerized medical record system VistA (Veterans Health Information Systems and Technology Architecture), the largest of its kind in the world. VistA is a collection of 80 different software subsystems that support the largest medical records system in the United States. It supports the medical records of over 8 million veterans, is used by 180,000 medical staff at 163 hospitals, more than 800 clinics, and 135 nursing homes.
+          </p>
+          <p>
+            Mumps is used by many health care organizations including Allscripts, Epic, Coventry Healthcare, EMIS, Partners HealthCare (including Massachusetts General Hospital), 
+MEDITECH, GE Healthcare (formerly IDX Systems and Centricity), Sunquest Information Systems, DASA, Quest Diagnostics, and Dynacare, among others. Some of the largest and most well known hospitals use Mumps based electronic health records systems. These include: Kaiser Permanente, Cleveland Clinic, Johns Hopkins 
+Medicine Hospitals, UCLA Health, Texas Health Resources, Massachusetts General Hospital, Mount Sinai Health System in New York City and the Duke University Health System. 
+          </p>
+        <section class="main-section" id="Open_Mumps_Interpreter">
+          <header>Open Mumps Interpreter</header>
+          <p>
+            The examples in this introduction were written and tested with the Open Mumps Interpreter, a free, open source distribution for Linux licensed under the GPL V2 License. The distribution is available at:<br>
+            <center><a href="http://www.cs.uni.edu/~okane/">Mumps Programming Language</a></center>
+          </p>
+          <p>
+            Once installed, the interpreter may be executed in interactive command line mode by typing:<br>
+          <code>
+            <center>mumps</center>
+          </code>
+          </p>
+          <p>
+            To exit, type halt. Mumps commands may be entered and executed immediately. To execute a program contained in a file, to the interpreter type:<br>
+          <code>
+            <center>goto ^filename.mps</center>
+          </code>
+          </p>
+          <p>
+            You may also, to a command window, type:<br>
+          <code>
+            <center>mumps filename.mps</center>
+          </code>
+          </p>
+          <p>
+            Alternatively, in Linux, a file of Mumps code may be executed directly if you set the file's protections to executable and have on its first line:<br>
+            <center>#!/usr/bin/mumps</center>
+          </p>
+          <p>
+            The program may now be executed by typing its name to the command prompt.
+Additional documentation is available at the site referenced above.
+          </p>
+            <section class="main-section" id="Syntax_Warning">
+          <header>Syntax Warning</header>
+          <p>
+            Mumps syntax will be discussed in detail below but it is important at this time to point out that standard Mumps code may not contain embedded blanks except within quoted 
+strings.
+          </p>
+          <p>
+            In Mumps, a blank is a delimiter.
+          </p>
+          <p>
+            <code>
+              <center>set var=3*x+y<br>
+set var = 3 * x + y ; blanks not allowed</center>
+            </code>
+          </p>
+        <section class="main-section" id="Variables">
+          <header>Variables</header>
+          <p>
+            Mumps has two types of variables: local and global.
+          </p>
+          <p>
+            Global variables are stored on disk and continue to exist when the program that 
+created them terminates.
+          </p>
+          <p>
+          Local variables are stored in memory and disappear when the program that created 
+them terminates.
+          </p>
+          <p>
+            A Mumps variable name must begin with a letter or percent sign (%) and may be 
+followed by letters, percent signs, or numbers.
+          </p>
+          <p>
+            Variable names are case sensitive. The underscore (_) and dollar sign ($) characters are not legal in variable names.
+          </p>
+          <p>
+            Global variable names are always preceded by a circumflex (^), local variables are not.
+          </p>
+          <p>
+            The contents of all Mumps variables are stored as varying length character strings. The maximum string length permitted is determined by the implementation but this 
+number is usually at least 512 and often far larger (normally 4096 in Open Mumps).
+          </p>
+          <p>
+            In Mumps there are no data declaration statements. Variables are created as needed when a value is assigned to a variable name for the first time.
+          </p>
+          <p>
+            Values may be assigned to variables by either a <b>set, merge</b> or <b>read</b> command.
+          </p>
+          <p>
+            Variables may also be created if they appear as arguments to the <b>new</b> command.
+          </p>
+          <p>
+            Once created, local variables normally persist until the program ends or they are destroyed by a <b>kill</b> command. Global variables persist until destroyed by a <b>kill</b> command.
+          </p>
+          <p>
+            In its original implementation, Mumps did not have a means to pass parameters to 
+invoked routines. Consequently, to this day, variables are, ordinarily, known to all 
+routines.
+          </p>
+        <section class="main-section" id="String_Constants">
+          <header>String Constants</header>
+          <p>
+            String constants are enclosed in double quote marks (").
+          </p>
+          <p>
+            A double quote mark itself can be inserted into a string by placing two immediately adjacent double quote marks ("") in the string. 
+          </p>
+          <p>
+            The single quote mark (') is the not operator with no special meaning within quoted 
+strings.
+          </p>
+          <p>
+            The C/C++/Java convention of preceding some special characters by a backslash does 
+not apply in Mumps.
+          </p>
+          <p>
+            "The seas divide and many a tide"<br>
+"123.45" (means the same as 123.45)<br>
+"Bridget O'Shaunessey? You're not making that up?"<br>
+"""The time has come,"" the walrus said."<br>
+"\"the time has come" (mismatched quotes)<br>
+'now is the time'     (single quote means NOT)
+          </p>
+         <section class="main-section" id="Mumps_Commands">
+          <header>Mumps Commands</header>
+          <p>
+            A Mumps program consists of a sequence of commands. Most commands have arguments that are to be executed although some commands do not have arguments.
+          </p>
+          <p>
+            In most cases, more than one command may appear on a line.
+          </p>
+          <p>
+            Some examples common commands that have arguments are:
+            <ul>
+              <li><b>set</b> (assignment)</li>
+              <li><b>for</b> (loop control)</li>
+              <li><b>if</b> (conditional execution)</li>
+              <li><b>read</b> (input)</li>
+              <li><b>write</b> (output)</li>
+            </ul>
+          </p>
+          <p>
+            On the other hand, the <b>halt</b> command does not have an argument (if it does, it becomes the <b>hang</b> command).
+          </p>
+          <p>
+            Each Mumps command begins with a keyword that may, in most cases, be abbreviated. Most abbreviations are a single letter. Excessively abbreviated Mumps code is compact but difficult to read.
+          </p>
+          <p>
+            The complete list is given below.
+          </p>
+        <section class="main-section" id="Built_In_Functions_&_Variables">
+          <header>Built In Functions & Variables</header>
+          <p>
+            Mumps has many built in functions, called intrinsic functions, and system variables, called intrinsic variables. These handle string manipulation, tree navigation and so on.
+          </p>
+          <p>
+            Each function and system variable begins with a dollar sign. Some system variables are read-only while others can be set.
+          </p>
+          <p>
+            While most functions appear in expressions only and yield a result, some functions may appear on the left hand side of an assignment operator or in <b>read</b> statements.
+          </p>
+        <section class="main-section" id="Reference">
+          <header>Reference</header>
+          <p>All the documentation in this page is taken from the <a href="https://www.cs.uni.edu/~okane/source/MUMPS-MDH/MumpsTutorial.pdf">Introduction to the Mumps Language.</a></p>
+      </main>
+    </div>
+  </body>
+</html>
