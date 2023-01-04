@@ -1,5 +1,8 @@
 # freeCodeCamp-Technical-Documentation-Page
-Build a Technical Documentation Page
+
+This project is a Technical Documentation page for the programming language, MUMPS. MUMPS, or Massachusetts General Hospital Utility Multi-programming System, is a programming language that was created in the 1960s. It is currently still being used by certain companies, such as government entities. I decided to do a technical documentation page on MUMPS in order to learn more about our current programming language before we eventually convert to SQL.
+
+## Build a Technical Documentation Page
 Objective: Build an app that is functionally similar to https://technical-documentation-page.freecodecamp.rocks
 
 User Stories:
